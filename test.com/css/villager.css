@@ -1,0 +1,34 @@
+/* CSS Document */
+#login {
+	position:absolute;
+	left:525px;
+	top:262px;
+	width:359px;
+	height:87px;
+	z-index:1;
+}
+#menu {
+	position:absolute;
+	left:68px;
+	top:26px;
+	width:1218px;
+	height:62px;
+	z-index:2;
+}
+#showvillager {
+	position:absolute;
+	left:305px;
+	top:264px;
+	width:607px;
+	height:87px;
+	z-index:1;
+}
+#addvillager {
+	position:absolute;
+	left:305px;
+	top:264px;
+	width:607px;
+	height:87px;
+	z-index:1;
+}
+
