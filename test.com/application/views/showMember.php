@@ -1,4 +1,5 @@
-﻿ <script>
+﻿
+ <script>
 	$(document).ready(function() {
   		$('.menu').click(function(event) {
 				 event.preventDefault();
