@@ -1,246 +1,396 @@
-<?php
-/*
-#########################
-Model: Villager
-ผู้พัฒนา: น.ส.สุภาพร  บัวลิถึง
-พัฒนาเมื่อ: 2014-10-29 11:11 AM
-ภายในประกอบด้วย
-Database: loansystem
-========
-Villager (villager)
-========
-- villagerId
-- villagerName
-- villagerLastname
-- villagerSex
-- villagerAddress
-- villagerTel
-- villagerIdcard
-- villagerStatus
-========
-+ add()
-+ findByPK($bookId)
-+ findByKeyword($field, $value)
-+ findByAll()
-+ delete()
-#########################
-*/
-class Villager extends CI_Model
-{
-	var $villagerId; //PK
-	var $villagerName; //ชื่อสมาชิกหมู่บ้าน
-	var $villagerLastname; //นามสกุล
-	var $villagerSex; //เพศ
-	var $villagerAddress; //ที่อยู่
-	var $villagerTel; //เบอร์โทร
-	var $villagerIdcard; //หมายเลขบัตรประชาชน
-	var $villagerStatus; //สถานะสมาชิกหมู่บ้าน
-	
-	function __construct()
+<?php 
+class Villager extends CI_Model {
+
+    function __construct()
 	{
 		$this->load->database();
-		parent::__construct();
+	   parent::__construct();
+    }
+
+######  Attribute  ###### 
+    var $villagerId ; ######  รหัสสมาชิก  ######
+    var $prefixes ; ######  คำนำหน้า  ######
+    var $villagerName ; ######  ชื่อสมาชิก  ######
+    var $villagerLastname ; ######  นามสกุล  ######
+    var $villagerBirthday ; ######  วันเกิด  ######
+    var $villagerAddress ; ######  ที่อยู่  ######
+    var $villagerTel ; ######  เบอร์โทร  ######
+    var $villagerCareer ; ######  อาชีพ  ######
+    var $villagerShare ; ######  จำนวนหุ้น  ######
+    var $villagerIdcard ; ######  เลขบัตรประชาชน  ######
+    var $villagerStatus ; ######  สถานะ  ######
+    var $typeId ; ######  รหัสประเภทการกู้  ######
+	var $userName;
+	var $passWord;
+	var $loanCredit;
+
+###### End Attribute  ###### 
+
+ ###### SET : $villagerId ######
+    function setVillagerId($villagerId){
+        $this->villagerId = $villagerId; 
+     }
+###### End SET : $villagerId ###### 
+
+
+###### GET : $villagerId ######
+    function getVillagerId(){
+        return $this->villagerId; 
+     }
+###### End GET : $villagerId ###### 
+
+
+ ###### SET : $prefixes ######
+    function setPrefixes($prefixes){
+        $this->prefixes = $prefixes; 
+     }
+###### End SET : $prefixes ###### 
+
+
+###### GET : $prefixes ######
+    function getPrefixes(){
+        return $this->prefixes; 
+     }
+###### End GET : $prefixes ###### 
+
+
+ ###### SET : $villagerName ######
+    function setVillagerName($villagerName){
+        $this->villagerName = $villagerName; 
+     }
+###### End SET : $villagerName ###### 
+
+
+###### GET : $villagerName ######
+    function getVillagerName(){
+        return $this->villagerName; 
+     }
+###### End GET : $villagerName ###### 
+
+
+ ###### SET : $villagerLastname ######
+    function setVillagerLastname($villagerLastname){
+        $this->villagerLastname = $villagerLastname; 
+     }
+###### End SET : $villagerLastname ###### 
+
+
+###### GET : $villagerLastname ######
+    function getVillagerLastname(){
+        return $this->villagerLastname; 
+     }
+###### End GET : $villagerLastname ###### 
+
+
+ ###### SET : $villagerBirthday ######
+    function setVillagerBirthday($villagerBirthday){
+        $this->villagerBirthday = $villagerBirthday; 
+     }
+###### End SET : $villagerBirthday ###### 
+
+
+###### GET : $villagerBirthday ######
+    function getVillagerBirthday(){
+        return $this->villagerBirthday; 
+     }
+###### End GET : $villagerBirthday ###### 
+
+
+ ###### SET : $villagerAddress ######
+    function setVillagerAddress($villagerAddress){
+        $this->villagerAddress = $villagerAddress; 
+     }
+###### End SET : $villagerAddress ###### 
+
+
+###### GET : $villagerAddress ######
+    function getVillagerAddress(){
+        return $this->villagerAddress; 
+     }
+###### End GET : $villagerAddress ###### 
+
+
+ ###### SET : $villagerTel ######
+    function setVillagerTel($villagerTel){
+        $this->villagerTel = $villagerTel; 
+     }
+###### End SET : $villagerTel ###### 
+
+
+###### GET : $villagerTel ######
+    function getVillagerTel(){
+        return $this->villagerTel; 
+     }
+###### End GET : $villagerTel ###### 
+
+
+ ###### SET : $villagerCareer ######
+    function setVillagerCareer($villagerCareer){
+        $this->villagerCareer = $villagerCareer; 
+     }
+###### End SET : $villagerCareer ###### 
+
+
+###### GET : $villagerCareer ######
+    function getVillagerCareer(){
+        return $this->villagerCareer; 
+     }
+###### End GET : $villagerCareer ###### 
+
+
+ ###### SET : $villagerShare ######
+    function setVillagerShare($villagerShare){
+        $this->villagerShare = $villagerShare; 
+     }
+###### End SET : $villagerShare ###### 
+
+
+###### GET : $villagerShare ######
+    function getVillagerShare(){
+        return $this->villagerShare; 
+     }
+###### End GET : $villagerShare ###### 
+
+
+ ###### SET : $villagerIdcard ######
+    function setVillagerIdcard($villagerIdcard){
+        $this->villagerIdcard = $villagerIdcard; 
+     }
+###### End SET : $villagerIdcard ###### 
+
+
+###### GET : $villagerIdcard ######
+    function getVillagerIdcard(){
+        return $this->villagerIdcard; 
+     }
+###### End GET : $villagerIdcard ###### 
+
+
+ ###### SET : $villagerStatus ######
+    function setVillagerStatus($villagerStatus){
+        $this->villagerStatus = $villagerStatus; 
+     }
+###### End SET : $villagerStatus ###### 
+
+
+###### GET : $villagerStatus ######
+    function getVillagerStatus(){
+        return $this->villagerStatus; 
+     }
+###### End GET : $villagerStatus ###### 
+
+
+ ###### SET : $typeId ######
+    function setTypeId($typeId){
+        $this->typeId = $typeId; 
+     }
+###### End SET : $typeId ###### 
+
+
+###### GET : $typeId ######
+    function getTypeId(){
+        return $this->typeId; 
+     }
+###### End GET : $typeId ###### 
+
+
+ ###### SET : $userName ######
+    function setUserName($userName){
+        $this->userName = $userName; 
+     }
+###### End SET : $userName###### 
+
+
+###### GET : $userName ######
+    function getUserName(){
+        return $this->userName; 
+     }
+###### End GET : $userName ###### 
+
+
+###### SET : $passWord ######
+    function setPassWord($passWord){
+        $this->passWord = $passWord; 
+     }
+###### End SET : $passWord###### 
+
+
+###### GET : $passWord ######
+    function getPassWord(){
+        return $this->passWord; 
+     }
+###### End GET : $passWord ###### 
+
+###### SET : $passWord ######
+    function setLoanCredit($loanCredit){
+        $this->loanCredit = $loanCredit; 
+     }
+###### End SET : $passWord###### 
+
+
+###### GET : $passWord ######
+    function getLoanCredit(){
+        return $this->loanCredit; 
+     }
+###### End GET : $passWord ###### 
+
+
+	function login()
+	{
+		$this->db->where('userName', $this->getUserName());
+		$this->db->where('passWord', $this->getPassWord());
+		$this->db->where('status','active');
+		$query = $this->db->get('villager')->result_array();
+		if($query)
+		{
+			return $query;
+		}
+		else
+		 {
+			return FALSE;
+		}
 	}
 	
-	###### SET : villagerId (PK) ######
-	function setVillagerId($villagerId)
-	{
-		$this->villagerId = $villagerId;
-	}
 
-	###### GET : villagerId (PK) ######
-	function getVillagerId()
+function findByAllActive()
 	{
-		return $this->villagerId;
-	}
-
-	###### SET : villagerName (ชื่อสมาชิกหมู่บ้าน) ######
-	function setVillagerName($villagerName)
-	{
-		$this->villagerName = $villagerName;
-	}
-
-	###### GET : villagerName (ชื่อสมาชิกหมู่บ้าน) ######
-	function getVillagerName()
-	{
-		return $this->villagerName;
-	}
-
-	###### SET : villagerLastname (นามสกุล) ######
-	function setVillagerLastname($villagerLastname)
-	{
-		$this->villagerLastname = $villagerLastname;
-	}
-
-	###### GET : villagerLastname (นามสกุล) ######
-	function getVillagerLastname()
-	{
-		return $this->villagerLastname;
-	}
-
-	###### SET : villagerSex (เพศ) ######
-	function setVillagerSex($villagerSex)
-	{
-		$this->villagerSex = $villagerSex;
-	}
-
-	###### GET : villagerSex (เพศ) ######
-	function getVillagerSex()
-	{
-		return $this->villagerSex;
+		$this->db->where('status','active');
+		$query = $this->db->get('villager')->result_array();
+		//var_dump($query);
+		//die();
+		return $query;
 	}
 	
-	###### SET : villagerAddress (ที่อยู่) ######
-	function setVillagerAddress($villagerAddress)
-	{
-		$this->villagerAddress = $villagerAddress;
-	}
-
-	###### GET : villagerAddress (ที่อยู่) ######
-	function getVillagerAddress()
-	{
-		return $this->villagerAddress;
-	}
-
-	###### SET : villagerTel (เบอร์โทร) ######
-	function setVillagerTel($villagerTel)
-	{
-		$this->villagerTel = $villagerTel;
-	}
-
-	###### GET : villagerTel (เบอร์โทร) ######
-	function getVillagerTel()
-	{
-		return $this->villagerTel;
-	}
-
-	###### SET : villagerIdcard (หมายเลขบัตรประชาชน) ######
-	function setVillagerIdcard($villagerIdcard)
-	{
-		$this->villagerIdcard = $villagerIdcard;
-	}
-
-	###### GET : villagerIdcard (หมายเลขบัตรประชาชน) ######
-	function getVillagerIdcard()
-	{
-		return $this->villagerIdcard;
-	}
-
-	###### SET : villagerStatus (สถานะสมาชิกหมู่บ้าน) ######
-	function setVillagerStatus($villagerStatus)
-	{
-		$this->villagerStatus = $villagerStatus;
-	}
-
-	###### GET : villagerStatus (สถานะสมาชิกหมู่บ้าน) ######
-	function getVillagerStatus()
-	{
-		return $this->villagerStatus;
-	}
-#############################################################
-/*
-function findByAll()
-	
-
-*/
-#############################################################
-
 	function findByAll()
 	{
 		$query = $this->db->get('villager')->result_array();
+		//var_dump($query);
+		//die();
 		return $query;
 	}
 	
-#############################################################
-/*
-function getPK()
-	
-
-*/
-#############################################################
-	function getPK()
+	function findByAllBoss()
 	{
-		$this->db->where('villagerId',$this->getVillagerId());
 		$query = $this->db->get('villager')->result_array();
+		//var_dump($query);
+		//die();
 		return $query;
 	}
-
-#############################################################
-/*
-function findByKeyword($field, $value)
 	
-
-*/
-#############################################################
-	function findByKeyword($field, $value)
-	{
-
-		$this->db->like($field, $value);	
-		
-		$query = $this->db->get('villager')->result_array();
-
-		return $query;
-	}
-
-#############################################################
-/*
-function addVilllager()
 	
-
-*/
-#############################################################
 	function addVilllager()
 	{
 		$data = array(
-			'loanShare' => $this->getLoanShare(),
-			'loanNum' => $this->getLoanNum(),
-			'loanCredit' => $this->getLoanCredit()
-		);
-		
-		$this->db->insert('loanmember',$data);
-		return $this->db->insert_id();
-		//echo 'สำเสร็จ';
-	}
-#############################################################
-/*
-function getallData()
-	แสดงข้อมูลทั้งหมด
-
-*/
-#############################################################
-	function getallData()
-	{
-		return $this->db->get('villager')->result_array();
-	}
-	
-	function updateTest()
-	{
-		$data = array(
+			
+			'prefixes' => $this->getPrefixes(),
 			'villagerName' => $this->getVillagerName(),
 			'villagerLastname' => $this->getVillagerLastname(),
-			'villagerSex' => $this->getVillagerSex(),
+			'villagerBirthday' => $this->getVillagerBirthday(),
 			'villagerAddress' => $this->getVillagerAddress(),
-			'villagerTel' => $this->getVillagerTel(),
 			'villagerIdcard' => $this->getVillagerIdcard(),
-			'villagerStatus' => $this->getVillagerStatus()
+			'villagerTel' => $this->getVillagerTel(),
+			'villagerCareer' => $this->getVillagerCareer(),
+			'villagerShare' => $this->getVillagerShare(),
+			'loanCredit' => $this->getLoanCredit()
+			
 		);
-		$this->db->where('villagerId',$this->getVillagerId());
+
+		$this->db->insert('villager',$data);
+		return $this->db->insert_id();
+		echo 'สำเสร็จ';
+	}
+
+
+	function addBoss()
+	{
+		$data = array(
+			
+			'prefixes' => $this->getPrefixes(),
+			'villagerName' => $this->getVillagerName(),
+			'villagerLastname' => $this->getVillagerLastname(),
+			'villagerBirthday' => $this->getVillagerBirthday(),
+			'villagerAddress' => $this->getVillagerAddress(),
+			'villagerIdcard' => $this->getVillagerIdcard(),
+			'villagerTel' => $this->getVillagerTel(),
+			'villagerCareer' => $this->getVillagerCareer(),
+			'villagerShare' => $this->getVillagerShare(),
+			'villagerStatus' => 'boss',
+			'loanCredit' => $this->getLoanCredit()
+			
+		);
+
+		$this->db->insert('villager',$data);
+		return $this->db->insert_id();
+		echo 'สำเสร็จ';
+	}
+
+	function update()
+	{
+		$data = array(
+			
+			'prefixes' => $this->getPrefixes(),
+			'villagerName' => $this->getVillagerName(),
+			'villagerLastname' => $this->getVillagerLastname(),
+			'villagerAddress' => $this->getVillagerAddress(),
+			'villagerIdcard' => $this->getVillagerIdcard(),
+			'villagerTel' => $this->getVillagerTel(),
+			'villagerCareer' => $this->getVillagerCareer(),
+			'villagerShare' => $this->getVillagerShare(),
+			'loanCredit' => $this->getLoanCredit()
+		);
+
+		$this->db->where('villager.villagerId',$this->getVillagerId());
 		$this->db->update('villager',$data);
 		//echo 'สำเสร็จ';
 	}
-	
-#############################################################
-/*
-function deleteData()
-	
 
-*/
-#############################################################
-	function deleteData()
+
+
+		function getPK()
 	{
 		$this->db->where('villagerId',$this->getVillagerId());
-		$this->db->delete('villager');
-		
+		$this->db->where('status','active');
+		$query = $this->db->get('villager')->result_array();
+		return $query;
+
 	}
+
+
+	function deleteData()
+	{
+		$data = array(
+			
+			'status'=>'nonActive'
+			
+		);
+
+		$this->db->where('villagerId',$this->getVillagerId());
+		$this->db->update('villager',$data);
+	}
+
+
+	function setTextSearch($textSearch){
+        $this->textSearch = $textSearch;
+     }
+    function getTextSearch(){
+        return $this->textSearch;
+     }
+
+
+	function searchData()
+	{
+		$this->db->like('villagerId ', $this->getTextSearch());
+		$this->db->or_like('villagerName ', $this->getTextSearch());
+	return $this->db->get('villager')->result_array();
+	}
+
+
+	function findByKeyword($field, $value)
+	{
+		$this->db->like($field, $value);	
+		$query = $this->db->get('villager')->result_array();
+		return $query;
+	}
+	
 }
 ?>

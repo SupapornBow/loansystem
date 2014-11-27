@@ -1,5 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class checkLogin extends CI_Controller {
+class CheckLogin extends CI_Controller {
 
     function __construct(){
 	   parent::__construct();
@@ -9,34 +9,36 @@ class checkLogin extends CI_Controller {
 	$this->load->view('showLogin',$data);
 	 }
 
-	 function logins(){
+	 function login(){
 	 	$username = $this->input->post('username');
 		$password = $this->input->post('password');
+		
+	    $this->villager->setUserName($username);
+	    $this->villager->setPassWord($password);
 
-	    $this->user->setUsername($username);
-	    $this->user->setPassword($password);
-
-	    $data= $this->user->login();
+	    $data= $this->villager->login();
 
 	   
 
 	if($data){
 		for ($i=0;$i<count($data);$i++){
 				$session = array(
-					'user_id'=> 	$data[$i]['user_Id'],
-					'username'=> 	$data[$i]['username'],
+					'villagerId'=> 	$data[$i]['villagerId'],
+					'userName'=> 	$data[$i]['userName'],
 					'status'=> 	$data[$i]['status'],
+					'name'=> 	$data[$i]['villagerName'].' '.$data[$i]['villagerLastname'],
+					'villagerStatus'=> 	$data[$i]['villagerStatus']
 				);
 		}
 			$this->session->set_userdata('logindata',$session);
 			 $logindata=$this->session->userdata('logindata');
 
-			 if($logindata['status']=='boss'){
+			 if($logindata['villagerStatus']=='boss'){
 			 header("Location: /index.php/Boss");
-			 }else if($logindata['status']=='member'){
+			 }else if($logindata['villagerStatus']=='member'){
 			  header("Location: /index.php/Member");
 			 }else{
-			  header("Location: /index.php/checkLogin");
+			 	$this->index('ไม่มี');
 			 }
 
 	}else{
@@ -47,5 +49,12 @@ class checkLogin extends CI_Controller {
 	}
 	
 	 }
+	 
+	 function logOut()
+	 {
+		 $this->session->unset_userdata('logindata');
+		 $this->index('');
+	}
+	 
 }
 ?>

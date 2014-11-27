@@ -1,51 +1,16 @@
-<!--<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8" />
-<link rel="stylesheet" href="/css/style.css" type="text/css">
-</head>
-<body>
-
-<form method="post" action="/index.php/CheckLogin/logins">
-
-<div align="center">
-	<fieldset>
-	 <legend>เข้าสุ่ระบบ:</legend>
-	 <table>
-	 	<tr>
-		 	<td> UserName: <input type="text" name="username"></td>
-		</tr>
-		<tr>
-		 	<td> PassWord: <input type="password" name="password"></td>
-		<tr>
-			<td align="right"><input type="submit" name="search" value="เข้าสู่ระบบ"></td>
-		</tr>
-	 </table>
-	 	 <p><?php echo $magessError; ?></p>
- 	</fieldset>
-</div>
-</body>
-</html>
--->
-<!DOCTYPE html>
+﻿<!--<!DOCTYPE html>
 <html>
 <head>
 	  <meta charset="UTF-8">
 	  <title>Login</title>
 
-		  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-		  <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:600,700,300'>
+
     	  <link rel="stylesheet" href="/css/login.css" type="text/css">
 
-		  <script src="js/prefixfree.min.js"></script>
 
 </head>
 
 <body>
-
-  <!--    
-        JS Credits to bartveneman
-        Comments? Feel free!
- -->
  
 		<div align="center">
 			<div class="wrap">
@@ -66,12 +31,53 @@
 		<div class='login'>
 			  <a href="#"><i class="icon-cog"></i> I've fogotten my password</a>
 			  <input type='submit'value='เข้าสู่ระบบ'>
-		</div><!-- /login -->
+		</div>
   </form>
-</div><!-- /wrap -->
+</div>
 
-		<script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
-		<script src="js/index.js"></script>
+</body>
+</html> 
+<!-- /login -->
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title>Login Page</title>
+
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/menu.css" type="text/css">
+<script type="text/javascript" src="<?php echo base_url()?>js/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="<?php echo base_url()?>css/styles.css">
+	
+	<link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/login.css" />
+	<!--<link rel="stylesheet" href="/css/login.css" type="text/css">-->
+</head>
+
+<body>
+
+	<form id="login-form" action="<?php echo base_url(); ?>index.php/CheckLogin/login" method="post">
+		<fieldset>
+		
+			<legend>Log </legend>
+			
+			<label for="login">UserName</label>
+			<input type="text" id="username" name="username" placeholder='ชื่อผู้ใช้งาน'/>
+			<div class="clear"></div>
+			
+			<label for="password">Password</label>
+			<input type="password" id="password" name="password" placeholder='รหัสผ่าน'/>
+			<div class="clear"></div>
+			<br />
+			
+			<input type="submit" style="margin: -20px 0 0 287px;" class="button" name="commit" value="Log in"/>	
+		</fieldset>
+	</form>
 	
 </body>
+
 </html>
